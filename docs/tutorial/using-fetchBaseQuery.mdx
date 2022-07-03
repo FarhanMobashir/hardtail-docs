@@ -1,0 +1,38 @@
+---
+sidebar_position: 2
+---
+
+# Using fetchBaseQuery
+
+fetchBaseQuery is a function which is used in conjunction with the API Provider Component. It is a wrapper around fetch which help us to make a basequery with providing the base url and adding any extra fetch options like headers if needed.
+
+### Function signature
+
+```jsx
+    fetchBaseQuery({
+        baseUrl: string // you api baseUrl will go here
+        fetchOptions: {Object}
+    })
+```
+
+### Example for baseQuery
+
+Defining the baseQuery
+
+```jsx
+const baseQuery =  fetchBaseQuery({
+        baseUrl: "api.hello.com" // you api baseUrl will go here
+        fetchOptions: { // any other fetch options will go here
+        headers: {
+            "Content-type": "application/json;",
+            Authorization: "This is token",
+    }
+  },
+    })
+```
+
+### Using in the api Provider
+
+```jsx
+<ApiProvider baseQuery={baseQuery} />
+```

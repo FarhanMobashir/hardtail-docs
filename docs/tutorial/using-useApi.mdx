@@ -1,0 +1,33 @@
+---
+sidebar_position: 1
+---
+
+# Using useApi
+
+The library also ships with a `useApi` hook which will consume the ApiProvider.
+
+## How this works
+
+When we fill all the props with the correct value we get a react hook for every query object we have defined in the query array.
+
+- If the query object has a `type:"query"` then we get a hook which will fetch the data for us and also gives us error and loading state
+- If the query object we have has a `type:mutation` then we we get a tuple where the first element is a function to call the api and post , or update , or delete something. We also we an object with the loading , error state and response came back from the api.
+- It makes the name of the api by prefixing the api action types with `use` and camel casing the api action types. For example if the apiActionType is `getAllPost` it will be converted to `useGetAllPost`
+
+## Usage
+
+```jsx
+const { state, useGetAllPost } = useApi();
+```
+
+- Here the state is the global Api state that is formed with the name value you passed in the queryArray.
+
+```jsx
+const { state, useGetAllPost } = useApi();
+
+<>
+  {state.getAllPosts.map((item) => (
+    <div>{item.name}</div>
+  ))}
+</>;
+```

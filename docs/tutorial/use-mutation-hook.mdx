@@ -1,0 +1,73 @@
+---
+sidebar_position: 4
+---
+
+# Using mutation hook
+
+As we know for every query object defined in the queryArray we get a hook respectively. In this we will learn about the mutation hook.
+
+To get our hook we use the `useApi` as shown below:
+
+```jsx
+const { state, useCreatePost } = useApi();
+```
+
+Now we will learn how to use the `useCreatePost` hook which is a mutation hook.
+
+## What does the hook contains
+
+The mutation hook return a tuple which contain :
+
+1. The first element of the tuple contain a callable function to perform the mutation.
+
+### mutation function signature
+
+```jsx
+const { state, useCreatePost } = useApi();
+const [createPost, { loading, error, data }] = useCreatePost();
+
+// highlight-start
+createPost({
+    body: {
+        ...request body will go here
+    },
+    urlParams: {
+        ...urlParameter will go here
+    },
+    fetchOption: ...fetch option will go here
+})
+//highlight-end
+
+```
+
+2. The second element is an object which contain the following things
+
+- `loading`: loading state of the api call
+- `error`: error state of the api call
+- `data`: response from the api
+
+### Usage
+
+- This is the way you can use the mutation hook
+
+```jsx
+const [createPost, { loading, error, data }] = useCreatePost();
+
+const [name, setName] = React.useState("");
+
+<div>
+  {loading ? (
+    <small>submitting...</small>
+  ) : (
+    <form
+      onSubmit={() =>
+        createPost({
+          body: name,
+        })
+      }
+    >
+      <input type="text" />
+    </form>
+  )}
+</div>;
+```

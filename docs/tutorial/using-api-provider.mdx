@@ -1,0 +1,127 @@
+---
+sidebar_position: 1
+---
+
+# Using API Provider
+
+The API provider component comes with a bunch of props which is used to configure the setup for the developers.
+
+## Props
+
+```jsx
+<ApiProvider
+queryArray={...defining array of query objects}
+baseQuery={baseQuery}
+logging={flag to log all the api actions and payload for debugging}
+ />
+```
+
+## Usage
+
+- [`apiArray`](""): This is an array of object used to define all your API calls.
+
+  The shape of the objects in queryArrray is as follows:
+
+```
+    apiArray: Array<{
+    name: string,
+    query: string,
+    method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH",
+    type: "query" | "mutation",
+    }>
+```
+
+### Example for apiArray
+
+```jsx
+<ApiProvider
+  queryArray={[
+    {
+      // highlight-start
+      name: "getAllPost",
+      // highlight-end
+      query: "/posts",
+      type: "query",
+      method: "GET",
+    },
+    ...rest,
+  ]}
+/>
+```
+
+:::tip Note
+
+While writing the name field of your query object ,make sure you use the unique name for each object.
+:::
+
+- [`baseQuery`](""): This props is used to define the baseQuery for you api endpoint and for defining the same we use [`fetchBaseQuery`]("") function which ships with the library.
+
+### Example for baseQuery
+
+Defining the baseQuery
+
+```jsx
+const baseQuery = fetchBaseQuery({
+  baseUrl: "https://jsonplaceholder.typicode.com",
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+  },
+});
+```
+
+Learn more about fetchBaseQuery [`here`]("")
+
+Using in the api Provider
+
+```jsx
+<ApiProvider baseQuery={baseQuery} />
+```
+
+- [`logging`](""): This props is used for logging all the api actionand payload in order to debug. To use the log feature you can simply pass a `log` string and it will do the job.
+
+### Example for logging
+
+Using in the api Provider
+
+```jsx
+<ApiProvider logging="log" />
+```
+
+:::tip Note
+
+After adding all the props value properly it will look like this
+:::
+
+```jsx
+<ApiProvider
+  queryArray={yourQueryArray}
+  baseQuery={yourBaseQuery}
+  logging="log"
+/>
+```
+
+### Useful Tips
+
+:::tip Note
+Some useful tips
+:::
+
+As we know that in some backend when we call any update,delete or creation endpoint it does the following things
+
+1. **Case 1 :** It either give back the resource which is updated,deleted or created
+
+2. **Case 2 :** Or it give back the updated resource after editing , updating or deletion.
+
+Now lets take an example to understand this. Suppose we have a `note` resource in our backend which has the following endpoint
+
+- getOne
+- getMany
+- updateOne
+- deleteOne
+- createOne
+
+If the api on mutation return only the updated,deleted,or updated resource and not all the resource back you have to sync in yourself and that's common.
+
+However if your api return all the resource after update,delete,or create then you can do one interesting thing to sync your UI with the server state.
+
+What you can do is just pass a tag key with the resource name on which in our case is `notes` and all you get,update,delete and create will sync with only one state that is `notes`;

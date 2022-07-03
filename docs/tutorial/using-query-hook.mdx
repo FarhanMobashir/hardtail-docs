@@ -1,0 +1,82 @@
+---
+sidebar_position: 3
+---
+
+# Using query hook
+
+As we know for every query object defined in the queryArray we get a hook respectively. In this we will learn about the query hook.
+
+To get our hook we use the `useApi` as shown below:
+
+```jsx
+const { state, useGetAllPost } = useApi();
+```
+
+Now we will learn how to use the `useGetAllPost` hook
+
+## What does the hook contains
+
+The query hook contain three things
+
+- `loading`: loading state of the api call
+- `error`: error state of the api call
+- `data`: response from the api
+- `reload`: a function to reload the api call
+
+### queryHook function signature
+
+The first argument the function takes is `urlParameter`, and the second argument you can pass and object containing some `fetch` option like headers, api-key , etc.
+
+```jsx
+useGetAllPost(urlParams: string, fetchOptions: {});
+```
+
+### Usage
+
+- If you don't need to pass any urlParameter and fetch option you can directly call the function as shown below.
+
+```jsx
+const { loading, error, reload, data } = useGetAllPost();
+```
+
+- if you want to add only the fetch option you have to pass the first arguement as the empty string and then pass the fetch option as shown below
+
+```jsx
+// when using both urlParameter and fetchOption
+const { loading, error, data } = useGetSinglePost(postId, {
+  headers: {
+    Authorization: token,
+  },
+});
+
+// when using only fetchOption
+const { loading, error, data } = useGetSinglePost("", {
+  headers: {
+    Authorization: token,
+  },
+});
+
+// when using only urlParameter
+const { loading, error, data } = useGetSinglePost(postId);
+```
+
+### Using in our markup
+
+```jsx
+const { state, useGetAllPost } = useApi();
+const { loading, error, data } = useGetSinglePost(postId);
+
+<div>
+{
+  error ? (
+    <>Oh no, there was an error</>
+  ) : loading ? (
+    <>Loading...</>
+  ) : data ? (
+    <>
+      <h3>{state.getAllPosts.name}</h3>
+    </>
+  ) : null;
+}
+</div>
+```
