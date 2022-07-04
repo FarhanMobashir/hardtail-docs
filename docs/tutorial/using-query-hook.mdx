@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Using query hook
 
-As we know for every query object defined in the queryArray we get a hook respectively. In this we will learn about the query hook.
+As we know for every query object defined in the apiArray we get a hook respectively. In this we will learn about the query hook.
 
 To get our hook we use the `useApi` as shown below:
 
@@ -20,6 +20,7 @@ The query hook contain three things
 
 - `loading`: loading state of the api call
 - `error`: error state of the api call
+- `errorValue`: errorValue
 - `data`: response from the api
 - `reload`: a function to reload the api call
 
@@ -36,7 +37,7 @@ useGetAllPost(urlParams: string, fetchOptions: {});
 - If you don't need to pass any urlParameter and fetch option you can directly call the function as shown below.
 
 ```jsx
-const { loading, error, reload, data } = useGetAllPost();
+const { loading, error, errorValue, reload, data } = useGetAllPost();
 ```
 
 - if you want to add only the fetch option you have to pass the first arguement as the empty string and then pass the fetch option as shown below

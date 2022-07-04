@@ -10,7 +10,7 @@ The API provider component comes with a bunch of props which is used to configur
 
 ```jsx
 <ApiProvider
-queryArray={...defining array of query objects}
+apiArray={...defining array of query objects}
 baseQuery={baseQuery}
 logging={flag to log all the api actions and payload for debugging}
  />
@@ -18,7 +18,7 @@ logging={flag to log all the api actions and payload for debugging}
 
 ## Usage
 
-- [`apiArray`](""): This is an array of object used to define all your API calls.
+- `apiArray`: This is an array of object used to define all your API calls.
 
   The shape of the objects in queryArrray is as follows:
 
@@ -34,8 +34,9 @@ logging={flag to log all the api actions and payload for debugging}
 ### Example for apiArray
 
 ```jsx
+import { ApiProvider } from "hardtail";
 <ApiProvider
-  queryArray={[
+  apiArray={[
     {
       // highlight-start
       name: "getAllPost",
@@ -46,7 +47,7 @@ logging={flag to log all the api actions and payload for debugging}
     },
     ...rest,
   ]}
-/>
+/>;
 ```
 
 :::tip Note
@@ -54,7 +55,7 @@ logging={flag to log all the api actions and payload for debugging}
 While writing the name field of your query object ,make sure you use the unique name for each object.
 :::
 
-- [`baseQuery`](""): This props is used to define the baseQuery for you api endpoint and for defining the same we use [`fetchBaseQuery`]("") function which ships with the library.
+- `baseQuery`: This props is used to define the baseQuery for you api endpoint and for defining the same we use `fetchBaseQuery` function which ships with the library.
 
 ### Example for baseQuery
 
@@ -69,15 +70,13 @@ const baseQuery = fetchBaseQuery({
 });
 ```
 
-Learn more about fetchBaseQuery [`here`]("")
-
 Using in the api Provider
 
 ```jsx
 <ApiProvider baseQuery={baseQuery} />
 ```
 
-- [`logging`](""): This props is used for logging all the api actionand payload in order to debug. To use the log feature you can simply pass a `log` string and it will do the job.
+- `logging`: This props is used for logging all the api actionand payload in order to debug. To use the log feature you can simply pass a `log` string and it will do the job.
 
 ### Example for logging
 
@@ -93,11 +92,7 @@ After adding all the props value properly it will look like this
 :::
 
 ```jsx
-<ApiProvider
-  queryArray={yourQueryArray}
-  baseQuery={yourBaseQuery}
-  logging="log"
-/>
+<ApiProvider apiArray={yourApiArray} baseQuery={yourBaseQuery} logging="log" />
 ```
 
 ### Useful Tips

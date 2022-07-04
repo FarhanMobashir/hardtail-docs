@@ -30,8 +30,8 @@ yarn add hardtail
 
 Hardtail includes these APIs:
 
-- [`API Provider`](../api/configureStore.mdx): A React context provider which can be wrap you App component and has all the functionality to configure all your api calls.
+- [`API Provider`](./using-api-provider.mdx): A React context provider which can be wrap you App component and has all the functionality to configure all your api calls.
 
-- [`useApi`](../api/configureStore.mdx): A React hook to consume the ApiProvider
+- [`useApi`](./using-useApi.mdx): A React hook to consume the ApiProvider
 
-- [`fetchBaseQuery`](../api/createReducer.mdx): A wrapper over the fetch-API to let you make a base query by adding your base url and headers if needed. This will be used in the API Provider
+- [`fetchBaseQuery`](./using-fetchBaseQuery.mdx): A wrapper over the fetch-API to let you make a base query by adding your base url and headers if needed. This will be used in the API Provider
