@@ -8,8 +8,8 @@ const FeatureList = [
     Svg: require("@site/static/img/feature_pendulum.svg").default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Very easy API to get most with less code. No need to do the ceremonies
+        for setting it up.
       </>
     ),
   },
@@ -18,18 +18,18 @@ const FeatureList = [
     Svg: require("@site/static/img/feature_book.svg").default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Hardtail lets you focus on more application logic and you never have to
+        think about making API calls.
       </>
     ),
   },
   {
-    title: "Powered by React",
+    title: "In Pure React",
     Svg: require("@site/static/img/feature_globe.svg").default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        The library doesn't have any dependencies other than React which makes
+        it interesting.
       </>
     ),
   },

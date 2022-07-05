@@ -17,13 +17,13 @@ Making API calls in any application is one of the basic stuff and there are many
 Get started by **installing hardtail** on any react application
 
 ```
-npm i hardtail
+npm i hardtail@latest
 ```
 
 or
 
 ```
-yarn add hardtail
+yarn add hardtail@latest
 ```
 
 ## What's Included
