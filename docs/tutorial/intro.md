@@ -16,6 +16,8 @@ Making API calls in any application is one of the basic stuff and there are many
 
 Get started by **installing hardtail** on any react application
 
+NPM Link : https://www.npmjs.com/package/hardtail
+
 ```
 npm i hardtail@latest
 ```
